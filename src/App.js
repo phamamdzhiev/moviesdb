@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import Header from "./components/Header";
+import Popular from "./pages/Popular";
+const Search = lazy(() => import("./pages/Search"));
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Suspense
+        fallback={
+          <div className="mt-5 text-center font-semibold text-main">
+            Loading..
+          </div>
+        }
+      >
+        <Routes>
+          <Route index exact path="/" element={<Popular />} />
+          <Route path="/search" element={<Search />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
