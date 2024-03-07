@@ -10,7 +10,7 @@ const Search = () => {
 
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=b14068db8b647012c487484f4bd40b9f&page=1&language=en-US&query=${searchText}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIES_API_KEY}&page=1&language=en-US&query=${searchText}`
       );
 
       const data = await response.json();

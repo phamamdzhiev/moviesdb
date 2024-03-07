@@ -5,7 +5,7 @@ const useTrendingContent = (page) => {
 
   const fetchTrending = async () => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=b14068db8b647012c487484f4bd40b9f&page=${page}`
+      `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_MOVIES_API_KEY}&page=${page}`
     );
     const data = await response.json();
     setContent(data.results);
